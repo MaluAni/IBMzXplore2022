@@ -229,7 +229,7 @@ zowe zos-files delete data-set $USER.CONTEST.GAS.VENDOR -f
 #Create ASM part
 
 awk -F'$' '{ print $3 }' "$MEA"/relevant >> "$MEA"/codes
-
+#needs grep from control with ASM URL - current is hardcoded as http://192.86.32.12:1880/Q4Y22FINAL/ 
 while IFS= read -r line
     do
         curl -w "\r" "http://192.86.32.12:1880/Q4Y22FINAL/$line" | tr -d '\n' | grep -v '"status":"fail"' >> "$MEA"/asm_idcode
